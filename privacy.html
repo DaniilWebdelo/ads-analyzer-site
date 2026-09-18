@@ -123,21 +123,25 @@
   <p>No analytics, telemetry, or tracking SDKs are embedded in the Application. No usage data is sent to ShareSpider developers or Webdelo administrators beyond what is visible in shared workspace files.</p>
 
   <h2>7. Data Retention</h2>
-  <p>Campaign data and audit reports are retained as long as needed for ongoing analysis. Users may delete local data at any time. OAuth tokens can be revoked from the Google Account permissions page.</p>
+  <p>Campaign data and audit reports are retained for the duration of active analysis projects plus 90 days after project closure. After this period, data is automatically purged from shared workspaces.</p>
+  <p>OAuth tokens can be revoked at any time from the <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account permissions page</a>.</p>
 
-  <h2>8. User Rights</h2>
-  <p>As an internal tool used by Webdelo team members, data access and management are governed by internal studio policies. Authorized users may:</p>
+  <h2>8. How to Request Data Deletion</h2>
+  <p>Authorized users can delete their data at any time:</p>
   <ul>
-    <li>Request deletion of their authentication account (contact administrator).</li>
-    <li>Revoke Google Ads API access from their Google Account at any time.</li>
-    <li>Delete local application data from their macOS device.</li>
+    <li><strong>Local data:</strong> Delete the Application's workspace folder from your macOS device — or use the built-in data management option in Settings.</li>
+    <li><strong>Shared workspace data:</strong> Contact the Webdelo administrator at <a href="mailto:webdelo.stream@gmail.com">webdelo.stream@gmail.com</a>. Deletion requests are fulfilled within 14 business days.</li>
+    <li><strong>Google Ads data:</strong> Revoke the Application's OAuth access from your Google Account. The Application will no longer be able to retrieve new data — and existing local data can be deleted as above.</li>
   </ul>
 
-  <h2>9. Changes to This Policy</h2>
+  <h2>9. Read-Only Guarantee</h2>
+  <p>ShareSpider is architecturally incapable of modifying your Google Ads account. The OAuth scopes requested are explicitly limited to read-only access. No code path exists in the Application that could create, update, pause, or delete campaigns, ads, keywords, bids, or budgets. This is a fixed design constraint — not a configurable option.</p>
+
+  <h2>10. Changes to This Policy</h2>
   <p>This Privacy Policy may be updated as the Application evolves. Changes will be communicated internally to all authorized users and reflected on this page.</p>
 
-  <h2>10. Contact</h2>
-  <p>For questions about this Privacy Policy or data handling practices, contact the Webdelo administrator at <a href="mailto:webdelo.stream@gmail.com">webdelo.stream@gmail.com</a>.</p>
+  <h2>11. Contact</h2>
+  <p>For questions about this Privacy Policy, data handling practices, or to exercise your data rights, contact the Webdelo administrator at <a href="mailto:webdelo.stream@gmail.com">webdelo.stream@gmail.com</a>.</p>
 </main>
 
 <footer class="container">
