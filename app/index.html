@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webdelo Content Platform — Internal Keyword Research & Content Planning</title>
+  <meta name="description" content="Webdelo Content Platform is an internal web application for keyword research, semantic core building, and content planning — accessible only to authorized Webdelo team members.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #e5e5e7;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --text: #18181b;
+      --muted: #71717a;
+      --subtle: #a1a1aa;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; max-width: 960px; margin: 0 auto;
+      background: rgba(250,250,250,.85); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .back-link { color: var(--subtle); font-size: 0.82rem; }
+    .back-link a { color: var(--subtle); text-decoration: none; }
+    .back-link a:hover { color: var(--text); }
+    .badge {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+      background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px;
+    }
+
+    .hero { text-align: center; padding: 70px 24px 50px; }
+    .hero .badge-row { margin-bottom: 20px; }
+    .hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -1.2px; line-height: 1.15; margin-bottom: 14px; }
+    .hero .subtitle { font-size: 1.05rem; color: var(--muted); max-width: 580px; margin: 0 auto 24px; }
+
+    .access-banner {
+      background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius);
+      padding: 18px 24px; margin: 30px 0; text-align: center;
+    }
+    .access-banner h3 { font-size: 0.95rem; margin-bottom: 4px; color: var(--accent); }
+    .access-banner p { color: var(--muted); font-size: 0.85rem; }
+
+    .screenshots { padding: 30px 0 60px; }
+    .screenshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto; }
+    .screenshot-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    .screenshot-card img { width: 100%; height: auto; display: block; }
+    .screenshot-card .label {
+      padding: 12px 16px; font-size: 0.82rem; color: var(--text); font-weight: 600;
+      border-top: 1px solid var(--border);
+    }
+
+    .features { padding: 50px 0 60px; }
+    .features h2 { text-align: center; font-size: 1.7rem; font-weight: 700; margin-bottom: 32px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .feature {
+      padding: 22px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--surface); transition: border-color 0.15s;
+    }
+    .feature:hover { border-color: var(--accent); }
+    .feature h3 { font-size: 1rem; margin-bottom: 5px; }
+    .feature p { color: var(--muted); font-size: 0.88rem; }
+
+    .google-block, .security-block {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px 28px; margin: 28px 0;
+    }
+    .google-block h3, .security-block h3 { font-size: 1rem; margin-bottom: 10px; }
+    .google-block p, .google-block li, .security-block p { color: var(--muted); font-size: 0.88rem; margin-bottom: 8px; }
+    .google-block ul { padding-left: 20px; margin-bottom: 8px; }
+
+    .team { padding: 50px 0; border-top: 1px solid var(--border); }
+    .team h2 { text-align: center; font-size: 1.7rem; font-weight: 700; margin-bottom: 32px; }
+    .team-card {
+      max-width: 440px; margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; text-align: center; box-shadow: var(--shadow);
+    }
+    .team-card h3 { font-size: 1.1rem; margin-bottom: 2px; }
+    .team-card .role { color: var(--accent); font-size: 0.82rem; font-weight: 600; margin-bottom: 12px; }
+    .team-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 960px; margin: 0 auto; flex-wrap: wrap; gap: 12px;
+    }
+    footer .copy { color: var(--subtle); font-size: 0.82rem; }
+    footer .links { display: flex; gap: 20px; }
+    footer .links a { color: var(--subtle); text-decoration: none; font-size: 0.82rem; }
+    footer .links a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 1.8rem; }
+      .hero { padding: 40px 16px 30px; }
+      .screenshot-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../img/logo.png" alt="Webdelo">
+    <span>Webdelo</span>
+  </a>
+  <div class="nav-links">
+    <span class="back-link"><a href="../index.html">← ShareSpider</a></span>
+    <a href="#features">Features</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge-row">
+    <span class="badge">Web Application</span>
+    <span class="badge" style="margin-left:8px;">Internal Tool</span>
+  </div>
+  <h1>Webdelo Content Platform</h1>
+  <p class="subtitle">Internal keyword research engine for semantic core building, search-demand analysis, and content planning — powered by Google Ads API.</p>
+</section>
+
+<div class="container">
+  <div class="access-banner">
+    <h3>🔒 Internal access only</h3>
+    <p>This application is an internal Webdelo tool. Access is restricted to authorized Webdelo team members and is granted by an administrator. There is no public registration or public access to the application.</p>
+  </div>
+</div>
+
+<section class="screenshots container">
+  <div class="screenshot-grid">
+    <div class="screenshot-card">
+      <img src="img/screen-auth.png" alt="Secure employee sign-in" loading="lazy">
+      <div class="label">Secure employee sign-in</div>
+    </div>
+    <div class="screenshot-card">
+      <img src="img/screen-app.png" alt="Internal application interface" loading="lazy">
+      <div class="label">Application interface</div>
+    </div>
+  </div>
+</section>
+
+<section class="features container" id="features">
+  <h2>What the platform does</h2>
+  <div class="features-grid">
+    <div class="feature">
+      <h3>🔑 Keyword Research</h3>
+      <p>Generate keyword ideas and retrieve historical search volume data via Google Ads API — build data-driven semantic cores.</p>
+    </div>
+    <div class="feature">
+      <h3>📊 Search Demand Analysis</h3>
+      <p>Analyze search query frequency trends. Identify rising and declining terms to prioritize content efforts.</p>
+    </div>
+    <div class="feature">
+      <h3>🏗️ Semantic Core Builder</h3>
+      <p>Structure keyword clusters, group by intent, and export ready-to-use semantic cores for content production.</p>
+    </div>
+    <div class="feature">
+      <h3>📈 Competition Metrics</h3>
+      <p>Retrieve available competition and bid-related indicators through the API to contextualize keyword opportunities.</p>
+    </div>
+    <div class="feature">
+      <h3>📝 Content Pipeline</h3>
+      <p>Feed keyword data into Webdelo's content production pipeline — from research to published article.</p>
+    </div>
+    <div class="feature">
+      <h3>👥 Team-Only</h3>
+      <p>All data stays within the Webdelo team. No external sharing, no public dashboards, no third-party access.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="google-block">
+    <h3>📡 Google Ads API Usage</h3>
+    <p>Google Ads data is accessed solely to perform internal keyword research, search-demand analysis, and content planning for Webdelo projects. The platform may use the API to:</p>
+    <ul>
+      <li>Retrieve keyword ideas and historical search volume</li>
+      <li>Analyze search query frequency trends</li>
+      <li>Obtain competition and bid-related metrics where available</li>
+      <li>Build and refine semantic cores</li>
+      <li>Prepare data for the internal content pipeline</li>
+    </ul>
+  </div>
+
+  <div class="security-block">
+    <h3>🛡️ Private by design</h3>
+    <p>The application is not publicly accessible. Access is limited to authorized Webdelo personnel. Authentication is required, and permissions are managed internally. Google API data is processed only for legitimate internal business purposes.</p>
+    <p style="margin-top:12px;"><strong>No data resale.</strong> Webdelo does not sell, rent, license, or otherwise commercialize data obtained through Google APIs. Data is used exclusively by authorized Webdelo team members for internal analysis and content planning. It is not sold, licensed, shared for advertising purposes, or made available to the public.</p>
+  </div>
+</section>
+
+<section class="team container">
+  <h2>Built by</h2>
+  <div class="team-card">
+    <h3>Popov Andrey</h3>
+    <div class="role">Chief Technology Officer (CTO), Co-founder of Webdelo</div>
+    <p>Leads the technical development and architecture of Webdelo's internal automation systems, including tools for keyword research, content production, and data analysis.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="copy">© 2026 Webdelo Studio. Internal tool — not for public distribution.</div>
+  <div class="links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:webdelo.stream@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
