@@ -3,123 +3,145 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy — AdsAppAI</title>
+  <title>Privacy Policy — ShareSpider</title>
   <style>
     :root {
-      --bg: #0a0a0f; --card: #12121a; --border: #1e1e2e;
-      --accent: #6c5ce7; --text: #e4e4ec; --muted: #8888a0;
+      --bg: #fafafa; --surface: #ffffff; --border: #e5e5e7;
+      --accent: #2563eb; --text: #18181b; --muted: #71717a; --subtle: #a1a1aa;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.7; min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
     nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 0; border-bottom: 1px solid var(--border); margin-bottom: 40px;
+      display: flex; align-items: center; gap: 10px; padding: 18px 0;
+      border-bottom: 1px solid var(--border); margin-bottom: 40px;
     }
-    .logo { font-size: 1.3rem; font-weight: 700; }
-    .logo span { color: var(--accent); }
-    .logo a { color: var(--text); text-decoration: none; }
+    nav img { height: 24px; }
+    nav a { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.05rem; }
     .legal { padding: 0 0 80px; }
-    .legal h1 { font-size: 2rem; margin-bottom: 6px; letter-spacing: -0.5px; }
-    .legal .updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 36px; }
-    .legal h2 { font-size: 1.2rem; margin: 32px 0 10px; }
-    .legal p, .legal li { color: var(--muted); margin-bottom: 12px; }
-    .legal ul { padding-left: 20px; margin-bottom: 16px; }
+    .legal h1 { font-size: 2rem; margin-bottom: 4px; letter-spacing: -0.5px; }
+    .legal .updated { color: var(--subtle); font-size: 0.85rem; margin-bottom: 36px; }
+    .legal h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+    .legal p, .legal li { color: var(--muted); margin-bottom: 12px; font-size: 0.93rem; }
+    .legal ul, .legal ol { padding-left: 22px; margin-bottom: 16px; }
     .legal a { color: var(--accent); text-decoration: none; }
     .legal a:hover { text-decoration: underline; }
-    footer {
-      border-top: 1px solid var(--border); padding: 28px 0;
-      text-align: center;
+    .legal strong { color: var(--text); }
+    .callout {
+      background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+      padding: 16px 20px; margin: 20px 0;
     }
-    footer .copy { color: var(--muted); font-size: 0.85rem; }
-    footer a { color: var(--muted); text-decoration: none; font-size: 0.85rem; margin: 0 10px; }
+    .callout p { color: #1e40af; margin-bottom: 0; font-size: 0.9rem; }
+    footer {
+      border-top: 1px solid var(--border); padding: 28px 0; text-align: center;
+    }
+    footer .copy { color: var(--subtle); font-size: 0.82rem; }
+    footer a { color: var(--subtle); text-decoration: none; font-size: 0.82rem; margin: 0 10px; }
     footer a:hover { color: var(--text); }
   </style>
 </head>
 <body>
 
 <nav class="container">
-  <div class="logo"><a href="index.html">Ads<span>App</span>AI</a></div>
+  <img src="img/logo.png" alt="ShareSpider">
+  <a href="index.html">ShareSpider</a>
 </nav>
 
 <main class="legal container">
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: September 18, 2026</p>
 
-  <p>AdsAppAI ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our website <strong>adsappai.xyz</strong> and the AdsAppAI platform (collectively, the "Service").</p>
+  <div class="callout">
+    <p><strong>ShareSpider is an internal tool.</strong> It is not publicly distributed and access is granted manually by the administrator of Webdelo Studio.</p>
+  </div>
 
-  <h2>1. Information We Collect</h2>
+  <p>This Privacy Policy describes how ShareSpider ("the Application", "we", "our") — a macOS-native desktop application developed and used exclusively by the internal team of <strong>Webdelo Studio</strong> — handles data.</p>
 
-  <h3>1.1 Information You Provide</h3>
+  <h2>1. Scope & Applicability</h2>
+  <p>ShareSpider is a <strong>closed internal software tool</strong>. It is not sold, licensed, or distributed to the general public. Access is provisioned manually by the Webdelo administrator and protected by a mandatory internal authentication form.</p>
+  <p>This policy applies to all authorized users within the Webdelo team who operate the Application.</p>
+
+  <h2>2. Data Access Model: Read-Only</h2>
+  <p>ShareSpider connects to third-party advertising platforms — primarily Google Ads — exclusively in <strong>read-only mode</strong>. The Application:</p>
   <ul>
-    <li><strong>Account Data:</strong> When you register, we collect your name, email address, and company name.</li>
-    <li><strong>Ad Platform Credentials:</strong> To analyze your campaigns, you may connect third-party ad platforms (Google Ads, Meta Ads, TikTok Ads). We store OAuth tokens securely and never access data beyond what you authorize.</li>
-    <li><strong>Communications:</strong> If you contact us, we collect your message and any information you choose to provide.</li>
+    <li>Retrieves Search Terms, ads, keywords, and campaign performance metrics for analysis.</li>
+    <li><strong>Never</strong> modifies, creates, pauses, or deletes campaigns, ads, keywords, or any other entity.</li>
+    <li><strong>Never</strong> changes bids, budgets, or targeting settings.</li>
+    <li>Does not perform automatic optimizations or automated rule-based actions.</li>
+  </ul>
+  <p>All decisions based on collected data are made by human PPC specialists — the Application provides information, not autonomous action.</p>
+
+  <h2>3. Information Collected</h2>
+  <h3>3.1 Campaign Data (via Google Ads API)</h3>
+  <ul>
+    <li>Search term reports</li>
+    <li>Keyword performance data</li>
+    <li>Ad copy and creative metadata</li>
+    <li>Impression share, click-through rates, conversion metrics</li>
+    <li>Lost impression share and lost budget estimates</li>
+    <li>Landing page URLs associated with campaigns</li>
+  </ul>
+  <p>This data is retrieved through OAuth 2.0 with the minimum required scopes for read access.</p>
+
+  <h3>3.2 Landing Page Content</h3>
+  <p>ShareSpider fetches and analyzes the content of landing pages linked to ad campaigns for relevance auditing. No personal data of website visitors is collected.</p>
+
+  <h3>3.3 User Authentication Data</h3>
+  <ul>
+    <li>Internal login credentials (managed and provisioned by the Webdelo administrator).</li>
+    <li>Session tokens for the duration of active use.</li>
   </ul>
 
-  <h3>1.2 Information Collected Automatically</h3>
+  <h2>4. How Data Is Used</h2>
+  <p>All collected data is used <strong>exclusively for internal analysis</strong> by the Webdelo team:</p>
   <ul>
-    <li><strong>Usage Data:</strong> Pages visited, features used, time spent, and interactions within the Service.</li>
-    <li><strong>Device Data:</strong> Browser type, operating system, IP address, and approximate location derived from IP.</li>
+    <li>Audit landing page relevance against campaign keywords.</li>
+    <li>Identify underperforming ads and wasted budget.</li>
+    <li>Generate unified performance reports for PPC specialists.</li>
+    <li>Track campaign quality metrics over time.</li>
+    <li>Correlate lead volume drops with market-wide search trends.</li>
   </ul>
 
-  <h3>1.3 Campaign Data</h3>
-  <p>We retrieve campaign performance metrics (impressions, clicks, spend, conversions) from connected ad platforms solely to provide analytics and optimization insights. Campaign data is stored in encrypted form and is never sold or shared with third parties.</p>
-
-  <h2>2. How We Use Your Information</h2>
+  <h2>5. Data Storage & Security</h2>
   <ul>
-    <li>To provide, maintain, and improve the Service.</li>
-    <li>To generate analytics, reports, and optimization recommendations.</li>
-    <li>To communicate with you about your account, updates, and support inquiries.</li>
-    <li>To detect and prevent fraud, abuse, and security incidents.</li>
-    <li>To comply with legal obligations.</li>
+    <li>Campaign data is stored locally on the user's macOS device and optionally in a shared workspace accessible to authorized Webdelo team members.</li>
+    <li>All local storage is protected by macOS file-system encryption (FileVault, where enabled).</li>
+    <li>OAuth tokens are stored in the macOS Keychain.</li>
+    <li>No campaign data is transmitted to external servers outside of Google's own APIs.</li>
   </ul>
 
-  <h2>3. Data Sharing & Disclosure</h2>
-  <p>We do <strong>not</strong> sell, rent, or trade your personal information. We may share data only:</p>
+  <h2>6. Data Sharing & Third Parties</h2>
+  <p>ShareSpider <strong>does not share, sell, rent, or trade</strong> campaign data with any third party. Data remains within:</p>
   <ul>
-    <li><strong>With Service Providers:</strong> Trusted third parties who perform services on our behalf (cloud hosting, email delivery) under strict data processing agreements.</li>
-    <li><strong>For Legal Reasons:</strong> If required by law, court order, or to protect the rights and safety of AdsAppAI, our users, or the public.</li>
-    <li><strong>With Your Consent:</strong> In any other scenario, with your explicit permission.</li>
+    <li>The local device of the authorized Webdelo specialist.</li>
+    <li>Internal Webdelo infrastructure used for team collaboration.</li>
+    <li>Google's infrastructure — solely via the official Google Ads API, under Google's own data processing terms.</li>
+  </ul>
+  <p>No analytics, telemetry, or tracking SDKs are embedded in the Application. No usage data is sent to ShareSpider developers or Webdelo administrators beyond what is visible in shared workspace files.</p>
+
+  <h2>7. Data Retention</h2>
+  <p>Campaign data and audit reports are retained as long as needed for ongoing analysis. Users may delete local data at any time. OAuth tokens can be revoked from the Google Account permissions page.</p>
+
+  <h2>8. User Rights</h2>
+  <p>As an internal tool used by Webdelo team members, data access and management are governed by internal studio policies. Authorized users may:</p>
+  <ul>
+    <li>Request deletion of their authentication account (contact administrator).</li>
+    <li>Revoke Google Ads API access from their Google Account at any time.</li>
+    <li>Delete local application data from their macOS device.</li>
   </ul>
 
-  <h2>4. Data Security</h2>
-  <p>We implement industry-standard technical and organizational measures to protect your data, including encryption at rest and in transit, access controls, and regular security audits. However, no method of electronic storage or transmission is 100% secure.</p>
+  <h2>9. Changes to This Policy</h2>
+  <p>This Privacy Policy may be updated as the Application evolves. Changes will be communicated internally to all authorized users and reflected on this page.</p>
 
-  <h2>5. Data Retention</h2>
-  <p>We retain your personal information for as long as your account is active or as needed to provide the Service. Campaign data is retained for the duration of your subscription plus 30 days after cancellation. You may request deletion of your data at any time by contacting us.</p>
-
-  <h2>6. Your Rights</h2>
-  <p>Depending on your jurisdiction, you may have the right to:</p>
-  <ul>
-    <li>Access, correct, or delete your personal data.</li>
-    <li>Object to or restrict processing of your data.</li>
-    <li>Export your data in a portable format.</li>
-    <li>Withdraw consent at any time.</li>
-  </ul>
-  <p>To exercise these rights, contact us at <a href="mailto:privacy@adsappai.xyz">privacy@adsappai.xyz</a>.</p>
-
-  <h2>7. Cookies</h2>
-  <p>We use essential cookies for authentication and session management. We do not use third-party tracking cookies or advertising cookies. You can disable cookies in your browser, but some features of the Service may not function properly.</p>
-
-  <h2>8. Third-Party Platforms</h2>
-  <p>When you connect third-party ad platforms, their respective privacy policies govern how they handle your data. We encourage you to review Google's, Meta's, and TikTok's privacy policies.</p>
-
-  <h2>9. Children's Privacy</h2>
-  <p>The Service is not intended for individuals under the age of 16. We do not knowingly collect personal information from children.</p>
-
-  <h2>10. Changes to This Policy</h2>
-  <p>We may update this Privacy Policy from time to time. We will notify you of material changes via email or through the Service. Continued use after changes constitutes acceptance.</p>
-
-  <h2>11. Contact Us</h2>
-  <p>For questions about this Privacy Policy, contact us at <a href="mailto:privacy@adsappai.xyz">privacy@adsappai.xyz</a>.</p>
+  <h2>10. Contact</h2>
+  <p>For questions about this Privacy Policy or data handling practices, contact the Webdelo administrator at <a href="mailto:webdelo.stream@gmail.com">webdelo.stream@gmail.com</a>.</p>
 </main>
 
 <footer class="container">
-  <div class="copy">© 2026 AdsAppAI. All rights reserved.</div>
+  <div class="copy">© 2026 Webdelo Studio. Internal tool — not for public distribution.</div>
   <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
 </footer>
 

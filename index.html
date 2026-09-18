@@ -3,166 +3,267 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdsAppAI — Ad Intelligence Platform</title>
-  <meta name="description" content="Analyze, optimize, and scale your ad campaigns with AI-powered insights.">
+  <title>ShareSpider — Internal Ad Analytics for Webdelo Studio</title>
+  <meta name="description" content="ShareSpider is a macOS-native analytics tool for PPC specialists. Read-only Google Ads audit, AI-powered recommendations, and performance journaling — built for Webdelo studio.">
   <style>
     :root {
-      --bg: #0a0a0f;
-      --card: #12121a;
-      --border: #1e1e2e;
-      --accent: #6c5ce7;
-      --accent-glow: rgba(108, 92, 231, 0.25);
-      --text: #e4e4ec;
-      --muted: #8888a0;
+      --bg: #fafafa;
+      --surface: #ffffff;
+      --border: #e5e5e7;
+      --accent: #2563eb;
+      --accent-light: #eff6ff;
+      --text: #18181b;
+      --muted: #71717a;
+      --subtle: #a1a1aa;
       --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
 
     /* Nav */
     nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 24px; max-width: 960px; margin: 0 auto;
+      padding: 18px 24px; max-width: 1040px; margin: 0 auto;
+      background: rgba(250,250,250,.85); backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--border);
     }
-    .logo { font-size: 1.4rem; font-weight: 700; color: var(--text); letter-spacing: -0.5px; }
-    .logo span { color: var(--accent); }
-    .nav-links { display: flex; gap: 24px; align-items: center; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .nav-logo img { height: 28px; width: auto; }
+    .nav-logo span { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
+    .badge {
+      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+      background: var(--accent-light); color: var(--accent); padding: 3px 10px; border-radius: 100px;
+    }
 
     /* Hero */
-    .hero { text-align: center; padding: 100px 24px 80px; }
-    .hero h1 {
-      font-size: 3.2rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.15;
-      margin-bottom: 20px;
+    .hero { text-align: center; padding: 80px 24px 60px; }
+    .hero .badge-row { margin-bottom: 24px; }
+    .hero h1 { font-size: 3rem; font-weight: 800; letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px; }
+    .hero h1 span { color: var(--accent); }
+    .hero .subtitle { font-size: 1.15rem; color: var(--muted); max-width: 560px; margin: 0 auto 8px; }
+    .hero .access-note { font-size: 0.85rem; color: var(--subtle); margin-top: 24px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .hero .access-note .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; display: inline-block; }
+
+    /* Screenshots */
+    .screenshots { padding: 40px 0 80px; }
+    .screenshots h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+    .screenshots .section-sub { text-align: center; color: var(--muted); margin-bottom: 40px; font-size: 0.95rem; }
+    .screenshot-grid { display: grid; grid-template-columns: 1fr; gap: 24px; max-width: 900px; margin: 0 auto; }
+    .screenshot-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
     }
-    .hero h1 span { background: linear-gradient(135deg, #6c5ce7, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin: 0 auto 36px; }
-    .btn {
-      display: inline-block; padding: 13px 32px; border-radius: 8px;
-      font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s;
+    .screenshot-card img { width: 100%; height: auto; display: block; }
+    .screenshot-card .label {
+      padding: 14px 18px; font-size: 0.85rem; color: var(--text); font-weight: 600;
+      border-top: 1px solid var(--border); display: flex; align-items: center; gap: 8px;
     }
-    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 0 30px var(--accent-glow); }
-    .btn-primary:hover { box-shadow: 0 0 45px var(--accent-glow); transform: translateY(-1px); }
-    .btn-outline { border: 1px solid var(--border); color: var(--text); margin-left: 12px; }
-    .btn-outline:hover { border-color: var(--accent); background: rgba(108, 92, 231, 0.08); }
+    .screenshot-card .label .num {
+      background: var(--accent-light); color: var(--accent); width: 22px; height: 22px;
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700;
+    }
+    .screenshot-card .label .desc { font-weight: 400; color: var(--muted); margin-left: auto; }
 
     /* Features */
-    .features { padding: 80px 0; }
-    .features h2 { text-align: center; font-size: 2rem; margin-bottom: 48px; letter-spacing: -0.5px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
-    .card {
-      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 28px; transition: border-color 0.2s;
+    .features { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .features h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 44px; letter-spacing: -0.5px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .feature {
+      padding: 24px; border-radius: var(--radius); border: 1px solid var(--border);
+      background: var(--bg); transition: border-color 0.15s;
     }
-    .card:hover { border-color: var(--accent); }
-    .card .icon { font-size: 1.6rem; margin-bottom: 14px; }
-    .card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: 0.9rem; }
+    .feature:hover { border-color: var(--accent); }
+    .feature .icon { font-size: 1.4rem; margin-bottom: 12px; }
+    .feature h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .feature p { color: var(--muted); font-size: 0.9rem; }
 
-    /* CTA */
-    .cta { text-align: center; padding: 80px 0 100px; }
-    .cta h2 { font-size: 2rem; margin-bottom: 16px; }
-    .cta p { color: var(--muted); margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    /* Read-only highlight */
+    .readonly-banner {
+      background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius);
+      padding: 20px 28px; margin: 40px 0; display: flex; align-items: flex-start; gap: 14px;
+    }
+    .readonly-banner .shield { font-size: 1.5rem; flex-shrink: 0; }
+    .readonly-banner h3 { font-size: 1rem; margin-bottom: 4px; }
+    .readonly-banner p { color: var(--muted); font-size: 0.88rem; }
+
+    /* Market Intelligence */
+    .market { padding: 80px 0; }
+    .market h2 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.5px; }
+    .market .section-sub { text-align: center; color: var(--muted); margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .market-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .market-point { text-align: center; padding: 28px 20px; }
+    .market-point .metric { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+    .market-point .label { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--border); padding: 28px 24px;
       display: flex; justify-content: space-between; align-items: center;
-      max-width: 960px; margin: 0 auto; flex-wrap: wrap; gap: 12px;
+      max-width: 1040px; margin: 0 auto; flex-wrap: wrap; gap: 12px;
     }
-    footer .copy { color: var(--muted); font-size: 0.85rem; }
+    footer .copy { color: var(--subtle); font-size: 0.82rem; }
     footer .links { display: flex; gap: 20px; }
-    footer .links a { color: var(--muted); text-decoration: none; font-size: 0.85rem; }
+    footer .links a { color: var(--subtle); text-decoration: none; font-size: 0.82rem; }
     footer .links a:hover { color: var(--text); }
 
     /* Legal pages */
-    .legal { padding: 60px 24px 80px; }
-    .legal h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: -0.5px; }
-    .legal .updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 32px; }
-    .legal h2 { font-size: 1.25rem; margin: 32px 0 12px; }
+    .legal { padding: 48px 24px 80px; }
+    .legal h1 { font-size: 2rem; margin-bottom: 4px; letter-spacing: -0.5px; }
+    .legal .updated { color: var(--subtle); font-size: 0.85rem; margin-bottom: 32px; }
+    .legal h2 { font-size: 1.2rem; margin: 32px 0 10px; }
     .legal p, .legal li { color: var(--muted); margin-bottom: 12px; }
-    .legal ul { padding-left: 20px; margin-bottom: 16px; }
+    .legal ul, .legal ol { padding-left: 22px; margin-bottom: 16px; }
+    .legal a { color: var(--accent); text-decoration: none; }
+    .legal a:hover { text-decoration: underline; }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.2rem; }
-      .hero { padding: 60px 16px 50px; }
-      .btn-outline { margin-left: 0; margin-top: 12px; }
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2rem; }
+      .hero { padding: 50px 16px 40px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.82rem; }
     }
   </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Ads<span>App</span>AI</div>
+  <a href="index.html" class="nav-logo">
+    <img src="img/logo.png" alt="ShareSpider">
+    <span>ShareSpider</span>
+  </a>
   <div class="nav-links">
     <a href="#features">Features</a>
+    <a href="#screenshots">Interface</a>
     <a href="privacy.html">Privacy</a>
     <a href="terms.html">Terms</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h1>Your ads, <span>powered by AI</span></h1>
-  <p>Analyze performance, uncover trends, and optimize every campaign — all in one intelligent dashboard.</p>
-  <a href="#" class="btn btn-primary">Get Early Access</a>
-  <a href="#features" class="btn btn-outline">Learn More</a>
+  <div class="badge-row">
+    <span class="badge">macOS Native</span>
+    <span class="badge" style="margin-left:8px;">Internal Tool — Webdelo Studio</span>
+  </div>
+  <h1>Your ads, <span>audited</span></h1>
+  <p class="subtitle">ShareSpider connects to Google Ads in read-only mode, analyzes landing pages for relevance, and surfaces wasted budget — so your team makes informed decisions, not guesses.</p>
+  <p class="subtitle" style="margin-top:8px;">Built for PPC specialists, marketers, and analysts at <strong>Webdelo</strong>.</p>
+  <p class="access-note"><span class="dot"></span> Access granted manually by administrator. Internal authorization required.</p>
 </section>
 
-<section class="features container" id="features">
-  <h2>What AdsAppAI does</h2>
-  <div class="grid">
-    <div class="card">
-      <div class="icon">📊</div>
-      <h3>Real-Time Analytics</h3>
-      <p>Track impressions, clicks, CTR, and conversions across platforms in a single unified view.</p>
+<section class="screenshots container" id="screenshots">
+  <h2>Interface</h2>
+  <p class="section-sub">A clean, native macOS experience — purpose-built for ad audit workflows.</p>
+  <div class="screenshot-grid">
+    <div class="screenshot-card">
+      <img src="img/screen-audit.png" alt="ShareSpider Audit — landing page relevance analysis" loading="lazy">
+      <div class="label"><span class="num">1</span> Audit Dashboard <span class="desc">Landing page relevance & keyword analysis</span></div>
     </div>
-    <div class="card">
-      <div class="icon">🧠</div>
-      <h3>AI Optimization</h3>
-      <p>Machine learning models detect underperforming ads and suggest bid, creative, and targeting adjustments.</p>
+    <div class="screenshot-card">
+      <img src="img/screen-automation.png" alt="ShareSpider Automation — multi-account batch checks" loading="lazy">
+      <div class="label"><span class="num">2</span> Batch Automation <span class="desc">Check 2–3 accounts in parallel, unified report</span></div>
     </div>
-    <div class="card">
-      <div class="icon">🔍</div>
-      <h3>Competitor Intel</h3>
-      <p>Monitor competitor ad spend, creatives, and placement strategies — stay one step ahead.</p>
+    <div class="screenshot-card">
+      <img src="img/screen-journal.png" alt="ShareSpider Journal — project metrics and campaign quality" loading="lazy">
+      <div class="label"><span class="num">3</span> Performance Journal <span class="desc">Lost budget tracking, campaign quality, uptime logs</span></div>
     </div>
-    <div class="card">
-      <div class="icon">📈</div>
-      <h3>Automated Reports</h3>
-      <p>Daily, weekly, or monthly reports delivered to your inbox — ready to share with clients or your team.</p>
+    <div class="screenshot-card">
+      <img src="img/screen-errors.png" alt="ShareSpider Error Monitor — page errors and issues" loading="lazy">
+      <div class="label"><span class="num">4</span> Error Monitor <span class="desc">Real-time page errors and accessibility issues</span></div>
     </div>
-    <div class="card">
-      <div class="icon">🔗</div>
-      <h3>Multi-Platform Sync</h3>
-      <p>Connect Google Ads, Meta, TikTok, and more. All your data, one source of truth.</p>
+    <div class="screenshot-card">
+      <img src="img/screen-settings.png" alt="ShareSpider Settings — full-site crawl configuration" loading="lazy">
+      <div class="label"><span class="num">5</span> Settings & Crawl <span class="desc">Multi-page campaigns, full-site crawl support</span></div>
     </div>
-    <div class="card">
-      <div class="icon">🛡️</div>
-      <h3>Privacy-First</h3>
-      <p>Zero third-party tracking on our end. Your campaign data is encrypted and never shared.</p>
+    <div class="screenshot-card">
+      <img src="img/screen-license.png" alt="ShareSpider License Activation" loading="lazy">
+      <div class="label"><span class="num">6</span> License Activation <span class="desc">Admin-issued codes — employees only</span></div>
     </div>
   </div>
 </section>
 
-<section class="cta container">
-  <h2>Ready to scale smarter?</h2>
-  <p>Join the waitlist and be the first to access AdsAppAI when we launch.</p>
-  <a href="#" class="btn btn-primary">Get Early Access</a>
+<section class="features" id="features">
+  <div class="container">
+    <h2>How ShareSpider works</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="icon">🔒</div>
+        <h3>Read-Only Data Collection</h3>
+        <p>Connects to Google Ads via read-only access — fetches Search Terms, ads, and keywords. No modifications, no automatic changes. Human decisions only.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🎯</div>
+        <h3>Relevance Detection</h3>
+        <p>Audits landing pages against campaign keywords. Flags irrelevant content and mismatched messaging that wastes ad spend.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🧠</div>
+        <h3>AI-Powered Analysis</h3>
+        <p>Processes data arrays with formulas and heuristics, then builds a structured prompt for AI evaluation — surfacing actionable recommendations.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3>Lost Metrics Journal</h3>
+        <p>Tracks lost budget, impression share losses, and performance gaps over time. Correlates drops with external market data.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>Batch Automation</h3>
+        <p>Run audits across 2–3 accounts simultaneously. Unified reporting merges findings into a single actionable document.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🌐</div>
+        <h3>Full-Site Crawl</h3>
+        <p>For campaigns with many landing pages: crawl the entire site. Settings let you configure depth, exclusions, and schedules.</p>
+      </div>
+    </div>
+
+    <div class="readonly-banner">
+      <div class="shield">🛡️</div>
+      <div>
+        <h3>Read-only by design</h3>
+        <p>ShareSpider never writes to your ad accounts. All data is collected for analysis only. Recommendations are delivered to specialists — the human makes the final call.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="market container">
+  <h2>Market Intelligence</h2>
+  <p class="section-sub">When leads drop, is it your campaign — or the market? ShareSpider connects the dots.</p>
+  <div class="market-points">
+    <div class="market-point">
+      <div class="metric">Search Volume</div>
+      <div class="label">Track keyword frequency trends to distinguish campaign issues from seasonal drops</div>
+    </div>
+    <div class="market-point">
+      <div class="metric">Competitor Shift</div>
+      <div class="label">Detect when competitors increase spend — contextualize your own metric changes</div>
+    </div>
+    <div class="market-point">
+      <div class="metric">Data-Driven</div>
+      <div class="label">Replace intuition with numbers: know whether to adjust bids or wait out a market dip</div>
+    </div>
+  </div>
 </section>
 
 <footer>
-  <div class="copy">© 2026 AdsAppAI. All rights reserved.</div>
+  <div class="copy">© 2026 Webdelo Studio. ShareSpider is an internal tool — not for public distribution.</div>
   <div class="links">
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms of Service</a>
+    <a href="mailto:webdelo.stream@gmail.com">Contact</a>
   </div>
 </footer>
 
